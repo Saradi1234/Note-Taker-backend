@@ -124,7 +124,8 @@ router.delete("/note/:id", async (req, res) => {
 //DELETE ALL Note
 router.delete("/note", async (req, res) => {
     try {
-        let deletenote = await noteModel.deleteMany({})
+        const user=req.user;
+        let deletenote = await noteModel.deleteMany({user})
         // console.log(deletenote);
         return res.status(200).json({
             message: "Successfully ALL Deleted",
